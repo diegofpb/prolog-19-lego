@@ -56,7 +56,38 @@ alturaTorre([
 
 % COLORES TORRE SIN SER TORRE
 
+coloresTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(s(s(s(s(s(0))))))), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a)
+    ], COLORES).
+
 % OBTENER COLORES TORRE CON TORRE VALIDA
+
+coloresTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), am),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(s(s(s(s(s(0))))))), s(0), s(s(0)), r)
+    ], COLORES).
+
 
 % COMPROBAR COLORES TORRE CON LISTA COLORES.
 
+coloresTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), am),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(s(s(s(s(s(0))))))), s(0), s(s(0)), r)
+    ], [v,r,a,v,am,a,r]).
+
+% COMPROBAR COLORES TORRE CON LISTA COLORES.
