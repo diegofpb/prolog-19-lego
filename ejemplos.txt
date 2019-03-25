@@ -1,0 +1,62 @@
+% TORRE VALIDA (EJEMPLO A)
+
+esTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), am),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(s(s(s(s(s(0))))))), s(0), s(s(0)), r)]).
+
+% TORRE NO VALIDA
+
+esTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(s(s(s(s(s(0))))))), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), am),
+    pieza( s(s(0)), s(0), s(s(0)), a)]).
+
+% ALTURA TORRE CORRECTA (EJEMPLO A)
+
+alturaTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), am),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(s(s(s(s(s(0))))))), s(0), s(s(0)), r)]
+, s(s(s(s(s(s(s(0)))))))).
+
+% OBTENER ALTURA TORRE.
+
+alturaTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), am),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(s(s(s(s(s(0))))))), s(0), s(s(0)), r)], ALTURA).
+
+% INTENTAR OBTENER ALTURA TORRE SIN SER TORRE.
+
+alturaTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(0)), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a),
+    pieza( s(s(0)), s(0), s(s(0)), v),
+    pieza( s(s(s(s(s(s(s(0))))))), s(0), s(s(0)), r),
+    pieza( s(s(0)), s(0), s(s(0)), a)
+    ], ALTURA).
+
+% COLORES TORRE SIN SER TORRE
+
+% OBTENER COLORES TORRE CON TORRE VALIDA
+
+% COMPROBAR COLORES TORRE CON LISTA COLORES.
+
