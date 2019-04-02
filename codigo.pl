@@ -1,19 +1,34 @@
 % Autores de la practica.
 alumno_prode('Fernandez','Peces Barba','Diego','T110271').
+alumno_prode('Garcia', 'Garcia', 'Ruben', 'W140186').
+alumno_prode('Maldonado','Quispe','Idania','Q080182').
 
-% pieza/4: Estructura que representa la anchura, la altura, la profundidad y el color.
+% color: Base de hechos de colores para la pieza.
+color('r').
+color('a').
+color('v').
+color('am').
+
+
+% esPieza/4: Estructura que representa la anchura, la altura, la profundidad y el color.
+esPieza(pieza(Anchura, Altura, Profundidad, Color)):-
+	color(Color),
+	nat(Anchura),
+	nat(Altura),
+	nat(Profundidad).
+
 
 % esTorre/1: Predicado que verifica si la Construccion cumple condiciones para ser torre.
 % Comprobar que la primera pieza tiene un largo y ancho menor o igual que la segunda pieza.
 
-esTorre([PP,SP]):-
-	PP = pieza(AP1,_,PP1,_),
-	SP = pieza(AP2,_,PP2,_),
+esTorre([PP]):-
+	 esPieza(PP).
+
+esTorre([pieza(AP1,_,PP1,_), pieza(AP2,_,PP2,_)]):-
 	esMenorIgual(AP1,AP2),
 	esMenorIgual(PP1,PP2).
 
-esTorre( [PP, SP | RP] ):-
-	PP = pieza(AP1,_,PP1,_),
+esTorre( [pieza(AP1,_,PP1,_), SP | RP] ):-
 	SP = P2,
 	SP = pieza(AP2,_,PP2,_),
 	esMenorIgual(AP1,AP2),
@@ -27,8 +42,7 @@ alturaTorre(T, AT):-
 	tamanoTorre(T, 0, R),
 	AT = R.
 
-tamanoTorre([PP|RP], TT, R):-
-	PP = pieza(_,A,_,_),
+tamanoTorre([pieza(_,A,_,_)|RP], TT, R):-
 	sumaPeano(A, TT, PR),
 	tamanoTorre(RP, PR, R).
 
@@ -42,8 +56,7 @@ coloresTorre(T, CT):-
 	addColoresTorre(T, CT, []),
 	CT = CT.
 
-addColoresTorre([PP|RP],CT, L):-
-	PP = pieza(_,_,_,C),
+addColoresTorre([pieza(_,_,_,C)|RP],CT, L):-
 	addColoresTorre(RP, CT, [C|L]).
 
 addColoresTorre([], L, L2):-
@@ -62,8 +75,44 @@ coloresIguales([E1|R], L2):-
 
 coloresIguales([], _).
 
-% esMenorIgual/2: Predicado que comprueba si es el numero de peano es mayor o igual que el siguiente.
 
+% esEdificioPar/1: Predicado que comprueba si el edificio tiene un numero par de clavos.
+
+esEdificioPar(C):-
+	contarClavos(C,0,_).
+
+% contarClavos/1: Predicado que devuelve el numero de clavos de una construccion.
+
+contarClavos([],R,R).
+
+contarClavos([PPIEZAS|RP],A,R):-
+	contarClavosLista(PPIEZAS,0,R1),
+	esPar(R1),
+	sumaPeano(A,R1,R2),
+	contarClavos(RP,R2,R).
+
+contarClavosLista([PPIEZA|RP],N,R):-
+	PPIEZA = 'b',
+	contarClavosLista(RP,N,R).
+
+contarClavosLista([PPIEZA|RP],N,R):-
+	color(PPIEZA),
+	sumaPeano(N, s(0), RES),
+	contarClavosLista(RP,RES,R).
+
+contarClavosLista(PIEZA,N,R):-
+	PIEZA = 'b',
+	N = R.
+
+contarClavosLista(PIEZA,N,R):-
+	color(PIEZA),
+	sumaPeano(N, N, R).
+	
+contarClavosLista([],N,R):-
+	N = R.
+	
+
+% esMenorIgual/2: Predicado que comprueba si es el numero de peano es mayor o igual que el siguiente.
 esMenorIgual(0, 0).
 esMenorIgual(0, s(_)).
 esMenorIgual(s(X), s(Y)):-
@@ -84,7 +133,18 @@ meterElemento([], L, L).
 meterElemento([X|L1], L2, [X|L3]) :-
 	meterElemento(L1, L2, L3).
 
+% invertir/2: Predicado que invierte la lista.
 invertir([],[]).
 invertir([X|L1],L2):-
 	invertir(L1,L3),
 	meterElemento(L3,[X],L2).
+
+% nat/1: Predicado que verifica que el numero en peano es natural.
+nat(0).
+nat(s(X)):-
+	nat(X).
+
+% esPar/1: Predicado que verifica que el numero en peano es par.
+esPar(0).
+esPar(s(s(X))):-
+	esPar(X).

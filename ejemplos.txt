@@ -1,6 +1,12 @@
 % TORRE VALIDA (EJEMPLO A)
 
 esTorre([
+    pieza( s(s(0)), s(0), s(s(0)), v)]).
+
+esTorre([
+    pieza( s(s(0)), s(0), s(s(0)), pene)]).
+
+esTorre([
     pieza( s(s(0)), s(0), s(s(0)), v),
     pieza( s(s(0)), s(0), s(s(0)), r),
     pieza( s(s(0)), s(0), s(s(0)), a),
@@ -91,3 +97,45 @@ coloresTorre([
     ], [v,r,a,v,am,a,r]).
 
 % COMPROBAR COLORES TORRE CON LISTA COLORES.
+
+CONTARCLAVOS IMPAR.
+contarClavos([
+    ['b','b','b','r','r','r','r','b','b','b'],
+    ['b','b','b','b','a','a','a','a','b','b'],
+    ['b','b','am','am','am','am','am','am','am','am'],
+    ['v','v','v','v','a','a','a','a','a','a'],
+    ['b','b','a','a','a','a','r','r','r','r'],
+    ['b','b','b','b','am','am','am','am','b','b']
+],0,R).
+
+CONTARCLAVOSIMPAR
+contarClavos([
+    ['b','b','b','r','r','r','r','b','b','b'],
+    ['b','b','b','b','a','a','a','a','a','b'],
+    ['b','b','am','am','am','am','am','am','am','am'],
+    ['v','v','v','v','a','a','a','a','a','a'],
+    ['b','b','a','a','a','a','r','r','r','r'],
+    ['b','b','b','b','am','am','am','am','b','b']
+],0,R).
+
+ESEDIFICIOPAR PAR
+
+esEdificioPar([
+    ['b','b','b','r','r','r','r','b','b','b'],
+    ['b','b','b','b','a','a','a','a','b','b'],
+    ['b','b','am','am','am','am','am','am','am','am'],
+    ['v','v','v','v','a','a','a','a','a','a'],
+    ['b','b','a','a','a','a','r','r','r','r'],
+    ['b','b','b','b','am','am','am','am','b','b']
+]).
+
+ESEDIFICIOPAR PAR IMPAR
+
+esEdificioPar([
+    ['b','b','b','r','r','r','r','b','b','b'],
+    ['b','b','b','b','a','a','a','a','a','b'],
+    ['b','b','am','am','am','am','am','am','am','am'],
+    ['v','v','v','v','a','a','a','a','a','a'],
+    ['b','b','a','a','a','a','r','r','r','r'],
+    ['b','b','b','b','am','am','am','am','b','b']
+]).
