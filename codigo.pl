@@ -91,6 +91,7 @@ contarClavos([PPIEZAS|RP],A,R):-
 	sumaPeano(A,R1,R2),
 	contarClavos(RP,R2,R).
 
+% contarClavosLista/3: Preficado que devuelve en R el numero de clavos de una lista.
 contarClavosLista([PPIEZA|RP],N,R):-
 	PPIEZA = 'b',
 	contarClavosLista(RP,N,R).
@@ -110,13 +111,40 @@ contarClavosLista(PIEZA,N,R):-
 	
 contarClavosLista([],N,R):-
 	N = R.
-	
 
-% esMenorIgual/2: Predicado que comprueba si es el numero de peano es mayor o igual que el siguiente.
+
+% esEdificioPiramide/1: Preficado que se verifica si la construccion es un edificio que cumple que cada nivel tiene un ancho estrictamente mayor que el nivel de arriba.
+
+esEdificioPiramide(C):-
+	contarClavosPiramide(C).
+
+contarClavosPiramide([]).
+
+contarClavosPiramide([PFILA,SFILA|RP]):-
+	contarClavosLista(PFILA,0,R1F),
+	contarClavosLista(SFILA,0,R2F),
+	sumaPeano(0,R1F,RS1),
+	sumaPeano(0,R2F,RS2),
+	esEstrictamenteMenor(RS1,RS2),
+	contarClavosPiramide([SFILA|RP]).
+
+contarClavosPiramide([PFILA,UFILA]):-
+	contarClavosLista(PFILA,0,R1F),
+	contarClavosLista(UFILA,0,R2F),
+	sumaPeano(0,R1F,RS1),
+	sumaPeano(0,R2F,RS2),
+	esEstrictamenteMenor(RS1,RS2).
+
+% esMenorIgual/2: Predicado que comprueba si es el numero de peano es menor o igual que el siguiente.
 esMenorIgual(0, 0).
 esMenorIgual(0, s(_)).
 esMenorIgual(s(X), s(Y)):-
 	esMenorIgual(X, Y).
+
+% esEstrictamenteMenor/2: Predicado que comprueba sie l numero de peano es estrictamente menor que el siguente.
+esEstrictamenteMenor(0, s(_)).
+esEstrictamenteMenor(s(X), s(Y)):-
+	esEstrictamenteMenor(X, Y).
 
 % sumaPeano/3: Predicado para sumar al primer elemento en peano, el segundo en peano.
 sumaPeano(R, 0, R).

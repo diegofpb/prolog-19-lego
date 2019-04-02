@@ -139,3 +139,34 @@ esEdificioPar([
     ['b','b','a','a','a','a','r','r','r','r'],
     ['b','b','b','b','am','am','am','am','b','b']
 ]).
+
+ES EDIFICIO PIRAMIDE SIN SER PIRAMIDE
+esEdificioPiramide([
+    ['b','b','b','r','r','r','r','b','b','b'],
+    ['b','b','b','b','a','a','a','a','a','b'],
+    ['b','b','am','am','am','am','am','am','am','am'],
+    ['v','v','v','v','a','a','a','a','a','a'],
+    ['b','b','a','a','a','a','r','r','r','r'],
+    ['b','b','b','b','am','am','am','am','b','b']
+]).
+
+ES EDIFICIO PIRAMIDE SIN SER PIRAMIDE EN UN NIVEL DE IGUAL TAMAÑO
+esEdificioPiramide([
+    ['b','b','b','r','r','r','r','b','b','b'],
+    ['b','b','b','b','a','a','a','a','b','b'],
+    ['b','b','am','am','am','am','am','am','am','am'],
+    ['v','v','v','v','a','a','a','a','a','a'],
+    ['b','b','a','a','a','a','r','r','r','r'],
+    ['b','b','b','b','am','am','am','am','b','b']
+]).
+
+ES EDIFICIO PIRAMIDE SIENDO PIRAMIDE
+
+esEdificioPiramide([
+    ['b','b','b','r','r','r','r','b','b','b'],
+    ['b','b','r','r','a','a','a','b','b','b'],
+    ['b','b','am','am','am','am','am','am','b','b'],
+    ['v','v','v','v','a','a','a','b','b','b'],
+    ['b','a','a','a','a','a','r','r','r','b'],
+    ['a','a','a','a','am','am','am','am','r','r']
+]).
